@@ -26,34 +26,39 @@ defaults:
   run:
     shell: bash
 
+env:
+  # Version de Zola utilisée en intégration continue (voir README : ≥ 0.23.6).
+  ZOLA_VERSION: "0.23.6"
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Build site with Zola
-        run: |
-          curl -sfL -o /tmp/zola.tar.gz https://github.com/getzola/zola/releases/download/v0.23.6/zola-v0.23.6-x86_64-unknown-linux-gnu.tar.gz
-          tar -xzf /tmp/zola.tar.gz -C /tmp
-          /tmp/zola build
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
-
+  # Un seul job, comme le workflow officiel GitHub Pages : un job `deploy`
+  # séparé avec `needs: build` et `environment: github-pages` peut déclencher
+  # une approbation manuelle et laisser le run bloqué en « waiting ».
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Build site with Zola
+        run: |
+          set -euo pipefail
+          curl -sfL -o /tmp/zola.tar.gz \
+            "https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+          tar -xzf /tmp/zola.tar.gz -C /tmp
+          /tmp/zola build --output-dir public
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./public
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
