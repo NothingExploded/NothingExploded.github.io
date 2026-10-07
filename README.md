@@ -58,6 +58,9 @@ content/
     <article>/index.md   # un article
 i18n/
   fr.toml                # chaînes d'interface françaises (surcharge le thème)
+sass/
+  custom.scss            # surcharges de couleurs (compile vers static/custom.css)
+  mods.scss              # mods Duckquill activés (compile vers static/mods.css)
 templates/               # surcharges du thème (prioritaires sur themes/duckquill/templates/)
 static/                  # fichiers copiés tels quels (favicon, .nojekyll, images)
 themes/duckquill/        # thème versionné ici (pas de sous-module)
@@ -100,6 +103,29 @@ pointent dans le vide.
 - **Couleur d'accent** : modifier `accent_color` (thème clair) et `accent_color_dark`
   (thème sombre) dans la section `[extra]` de `config.toml`. Toute la déclinaison
   (liens, cartes, navigation, ombres) en découle.
+- **Couleurs de fond et surfaces** : `sass/custom.scss`. Duckquill v6 dérive son
+  fond de `accent_color` (`color-mix(… 20%, white)`), ce qui donne un rose pâle
+  avec le rouge d'accent. Ce fichier écrase `--bg-color`, `--glass-bg` et
+  `--bg-overlay` dans les trois contextes que le thème connaît : thème clair,
+  `[data-theme="dark"]` et `prefers-color-scheme: dark`. Valeurs actuelles :
+  `#ffffff` en clair, `#5a5a5a` en sombre.
+- **Polices** : `bundled_fonts = true` charge `fonts.css` (Inter Variable pour le
+  texte, JetBrains Mono pour le code), embarquées dans le thème. Sans cette
+  option, `fonts.css` n'est jamais demandé et le navigateur retombe sur sa
+  police système — le rendu change complètement d'une machine à l'autre.
+- **Mise en page** : `sass/mods.scss` importe les « mods » officiels de Duckquill
+  depuis `themes/duckquill/sass/mods/`. Actif ici : `classic-nav`, qui remplace la
+  pilule flottante de v6 par une barre pleine largeur collée en haut. Pour en
+  ajouter un, l'importer dans ce fichier — la liste
+  <https://duckquill.daudix.one/mods/> documente chacun (attention :
+  `modern-headings` force une police système sur les titres, donc incompatible
+  avec Inter).
+- **Ajouter une feuille de style** : déposer un `.scss` dans `sass/`, puis
+  ajouter le `.css` correspondant à `styles` dans `[extra]` de `config.toml`.
+  Zola compile `sass/*.scss` vers `static/*.css` à chaque build ; les fichiers
+  produits sont ignorés par git (`.gitignore`) pour éviter les doublons avec le
+  thème. L'ordre de `styles` compte : les feuilles sont chargées après
+  `style.css`, dans l'ordre de la liste.
 - **Navigation, pied de page, réseaux sociaux** : `[extra.nav]` et `[extra.footer]`
   de `config.toml`.
 - **Commentaires Mastodon** : renseigner `host` et `user` dans `[extra.comments]`
@@ -111,7 +137,9 @@ pointent dans le vide.
 - **Mise à jour du thème** : remplacer le contenu de `themes/duckquill/` par la
   dernière version de <https://codeberg.org/daudix/duckquill> (attention : Zola
   doit rester ≥ 0.23.6), puis vérifier que les surcharges de `templates/` sont
-  toujours compatibles.
+  toujours compatibles et que les variables écrasées dans `sass/custom.scss`
+  existent encore (noms `--bg-color`, `--glass-bg`, `--bg-overlay` et liste des
+  mods dans `themes/duckquill/sass/mods/`).
 
 ## Licence
 
