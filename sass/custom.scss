@@ -1,0 +1,64 @@
+/*!
+ * Personnalisation de NotExp par-dessus le thème Duckquill v6.3.0.
+ *
+ * Objectif : retrouver le rendu du site de formation Git@CNRS
+ * (`git_cnrs_revamped`, thème Duckquill v1.0.0) tout en restant sur le thème
+ * v6, actuellement maintenu.
+ *
+ * Duckquill v6 dérive ses couleurs de `--accent-color` via `color-mix()` :
+ * `--bg-color: color-mix(in srgb, var(--accent-color) 20%, white)`. Avec le
+ * rouge CNRS (#f71c1c) cela donne un rose pâle, très éloigné du rendu d'origine
+ * (fond blanc en clair, gris en sombre). On écrase donc `--bg-color` et les
+ * variables de surface dans les trois contextes que v6 connaît : thème clair
+ * explicite, `[data-theme="dark"]` et préférence système sombre.
+ *
+ * Les polices sont gérées par le thème : `bundled_fonts = true` dans
+ * `config.toml` ajoute `fonts.css` (Inter Variable + JetBrains Mono).
+ */
+
+// Variables utilitaires, dans l'esprit de `sass/custom.scss` du site de
+// référence. Sass compile `sass/*.scss` vers `static/*.css` ; `custom.scss`
+// produit donc `static/custom.css`, chargé via `extra.styles`.
+@use "sass:color";
+
+$accent: #f71c1c;
+$accent-dark: #ff5c5c;
+
+// Surfaces, reprises telles quelles du site de formation.
+$bg-light: #ffffff;
+$bg-dark: #5a5a5a;
+$surface-light: rgb(255 255 255 / 0.8);
+$surface-dark: rgb(98 98 98 / 0.8);
+
+// Les valeurs sont écrites en ASCII strict : les commentaires Sass `//` ne sont
+// pas conservés à la compilation, mais `sass:color` et les littéraux hexadécimaux
+// le sont, et les parseurs d'URL tolèrent mal les octets non-ASCII.
+
+// ---------------------------------------------------------------------------
+// Thème clair
+// ---------------------------------------------------------------------------
+:root {
+	--bg-color: #{$bg-light};
+	--glass-bg: #{$surface-light};
+	--bg-overlay: linear-gradient(#{$surface-light}, #{$surface-light});
+}
+
+// ---------------------------------------------------------------------------
+// Thème sombre — `data-theme="dark"` posé explicitement par le sélecteur de
+// thème du thème (theme-switcher.js), et variante « préférence système ».
+// ---------------------------------------------------------------------------
+@mixin dark-surface {
+	--bg-color: #{$bg-dark};
+	--glass-bg: #{$surface-dark};
+	--bg-overlay: linear-gradient(#{$surface-dark}, #{$surface-dark});
+}
+
+[data-theme="dark"] {
+	@include dark-surface;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		@include dark-surface;
+	}
+}

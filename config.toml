@@ -44,8 +44,10 @@ index_format = "fuse_json"
 # Rouge CNRS ; variante sombre légèrement adoucie pour rester lisible.
 accent_color = "#f71c1c"
 accent_color_dark = "#ff5c5c"
-# Utiliser les polices embarquées dans le thème (Inter + Source Code Pro)
-#bundled_fonts = true
+# Utiliser les polices embarquées dans le thème (Inter + JetBrains Mono) :
+# sans cette option, la page n'inclut pas `fonts.css` et le navigateur rend
+# avec sa police système.
+bundled_fonts = true
 # Favicon sous forme d'emoji (un seul emoji est rendu)
 #emoji_favicon = "🦆🪶"
 # Suivi de tickets et code source du site
@@ -53,8 +55,10 @@ accent_color_dark = "#ff5c5c"
 # servi à la racine) ; « NotExp » est le nom du site, pas du compte GitHub.
 issues_url = "https://github.com/NothingExploded/NothingExploded.github.io/issues"
 source_url = "https://github.com/NothingExploded/NothingExploded.github.io"
-# Feuilles de style additionnelles, attendues dans ./static/
-#styles = ["YOUR_STYLE.css"]
+# Feuilles de style additionnelles : Sass compile ./sass/*.scss vers ./static/*.css,
+# et Duckquill v6 lit la liste `styles` (et non `stylesheets`).
+# `custom.css` provient de ./sass/custom.scss (fond blanc/gris du site de formation).
+styles = ["mods.css", "custom.css"]
 # Scripts additionnels, attendus dans ./static/
 #scripts = ["YOUR_SCRIPT.js"]
 # Bouton « copier le code » sur les blocs de code

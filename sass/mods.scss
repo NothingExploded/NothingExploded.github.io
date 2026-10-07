@@ -1,0 +1,12 @@
+/*!
+ * Mods Duckquill : rapproche la mise en page de celle du thème v1.0.0 utilisé
+ * par le site de formation Git@CNRS.
+ *
+ * `@use` est résolu par rapport à la racine du projet Zola, donc `sass/mods.scss`
+ * atteint le thème via `../themes/duckquill/`. Le fichier compile vers
+ * `static/mods.css`, chargé via `extra.styles`.
+ */
+
+// Barre de navigation pleine largeur, collée en haut, au lieu de la pilule
+// flottante arrondie du thème v6.
+@use "../themes/duckquill/sass/mods/classic-nav";

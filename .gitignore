@@ -1,2 +1,6 @@
 public/
 .DS_Store
+
+# CSS compilé depuis ./sass par Zola (recopié dans ./public au build)
+/static/custom.css
+/static/mods.css
