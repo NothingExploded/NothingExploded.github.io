@@ -1,0 +1,119 @@
+# Configuration du blog NotExp
+# Documentation Zola : https://www.getzola.org/documentation/getting-started/configuration/
+# Thème : Duckquill — https://duckquill.daudix.one
+
+title = "NotExp"
+base_url = "https://notexp.github.io"
+description = "Blog : expériences, notes techniques et réflexions."
+author = "NotExp"
+
+# Langue par défaut. Le thème est traduit via `themes/duckquill/i18n/fr.toml` ;
+# pour une autre langue, déposer le fichier correspondant dans ./i18n/.
+default_language = "fr"
+
+# Thème, copié et versionné dans ./themes/duckquill (pas de sous-module)
+theme = "duckquill"
+
+compile_sass = true
+minify_html = true
+generate_feeds = true
+# Seul le premier fichier alimente le bouton du flux dans la barre de navigation ;
+# les autres flux restent annoncés dans l'en-tête des pages.
+feed_filenames = ["atom.xml", "rss.xml"]
+build_search_index = true
+
+taxonomies = [{ name = "tags", feed = true }]
+
+[markdown]
+smart_punctuation = true
+bottom_footnotes = true
+github_alerts = true
+
+[markdown.highlighting]
+light_theme = "solarized-light"
+dark_theme = "solarized-dark"
+style = "class"
+error_on_missing_language = true
+
+[search]
+# Index plus léger que l'index par défaut, adapté à un blog.
+index_format = "fuse_json"
+
+[extra]
+# Couleur d'accent, déclinée partout par le thème (liens, cartes, navigation…).
+# Rouge CNRS ; variante sombre légèrement adoucie pour rester lisible.
+accent_color = "#f71c1c"
+accent_color_dark = "#ff5c5c"
+# Utiliser les polices embarquées dans le thème (Inter + Source Code Pro)
+#bundled_fonts = true
+# Favicon sous forme d'emoji (un seul emoji est rendu)
+#emoji_favicon = "🦆🪶"
+# Suivi de tickets et code source du site
+issues_url = "https://github.com/notexp/notexp.github.io/issues"
+source_url = "https://github.com/notexp/notexp.github.io"
+# Feuilles de style additionnelles, attendues dans ./static/
+#styles = ["YOUR_STYLE.css"]
+# Scripts additionnels, attendus dans ./static/
+#scripts = ["YOUR_SCRIPT.js"]
+# Bouton « copier le code » sur les blocs de code
+show_copy_button = true
+# Temps de lecture estimé dans les articles
+show_reading_time = true
+# Bouton de partage (https://shareopenly.org)
+show_share_button = true
+# Bouton « backlinks » des articles liés
+show_backlinks = true
+# Rendu LaTeX via KaTeX (alourdit la page ; activable page par page)
+#katex = true
+# Table des matières sur toutes les pages ayant des titres
+#toc = true
+# Variante en ligne, en plus des boutons de navigation flottants
+#toc_inline = true
+# Séparateurs personnalisés
+#separator = "•"
+#title_separator = "-"
+
+[extra.nav]
+# Masquer la barre de navigation quand elle n'est pas survolée
+#auto_hide = true
+# Bouton du flux Atom/RSS
+show_feed = true
+# Sélecteur de thème clair/sombre
+show_theme_switcher = true
+# Lien vers le dépôt dans la barre de navigation
+show_repo = true
+# Liens de la barre de navigation ; pour un fichier local, utiliser le format
+# Markdown "@/blog/_index.md" (https://www.getzola.org/documentation/content/linking/)
+links = [
+	{ url = "@/blog/_index.md", name = "Blog", icon = "journal-bookmark-fill" },
+	{ url = "@/contact.md", name = "Contact", icon = "envelope-fill" },
+]
+
+[extra.footer]
+# Liens du pied de page, même format que ceux de la navigation
+links = [
+	{ url = "@/blog/_index.md", name = "Blog" },
+	{ url = "@/contact.md", name = "Contact" },
+]
+# Liens sociaux du pied de page ; tout SVG encodé en URL convient.
+# https://simpleicons.org est la source recommandée pour les icônes.
+socials = []
+
+# Commentaires propulsés par Mastodon
+# (https://carlschwan.eu/2020/12/29/adding-comments-to-your-static-blog-with-mastodon/).
+# ⚠️ À renseigner pour activer les commentaires, le QR code et la vérification rel="me".
+# Les valeurs peuvent être surchargées dans le front-matter d'un article.
+[extra.comments]
+# Instance Mastodon où se trouve le compte
+host = ""
+# Nom d'utilisateur du compte
+user = ""
+# Afficher un QR code vers le post Mastodon
+show_qr = false
+
+# Statistiques GoatCounter ; activées uniquement si renseignées.
+[extra.goatcounter]
+# Serveur GoatCounter ; goatcounter.com par défaut.
+#host = "YOUR_SERVER"
+# Nom d'utilisateur GoatCounter (sert de domaine : <user>.goatcounter.com)
+#user = ""
