@@ -1,11 +1,11 @@
-# Configuration du blog NotExp
+# Configuration du blog Nothing Exploded
 # Documentation Zola : https://www.getzola.org/documentation/getting-started/configuration/
 # Thème : Duckquill — https://duckquill.daudix.one
 
-title = "NotExp"
+title = "Nothing Exploded"
 base_url = "https://nothingexploded.github.io"
 description = "Blog : expériences, notes techniques et réflexions."
-author = "NotExp"
+author = "Nothing Exploded"
 
 # Langue par défaut. Le thème est traduit via `themes/duckquill/i18n/fr.toml` ;
 # pour une autre langue, déposer le fichier correspondant dans ./i18n/.
@@ -52,7 +52,7 @@ bundled_fonts = true
 #emoji_favicon = "🦆🪶"
 # Suivi de tickets et code source du site
 # NB : le dépôt GitHub s'appelle NothingExploded.github.io (site « utilisateur »,
-# servi à la racine) ; « NotExp » est le nom du site, pas du compte GitHub.
+# servi à la racine) ; « Nothing Exploded » est le nom du site, pas du compte GitHub.
 issues_url = "https://github.com/NothingExploded/NothingExploded.github.io/issues"
 source_url = "https://github.com/NothingExploded/NothingExploded.github.io"
 # Feuilles de style additionnelles : Sass compile ./sass/*.scss vers ./static/*.css,

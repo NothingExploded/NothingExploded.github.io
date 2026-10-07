@@ -82,7 +82,7 @@ Le workflow `.github/workflows/deploy.yml` se déclenche à chaque `push` sur `m
 Le site est servi à la racine de <https://nothingexploded.github.io>. C'est
 possible parce que le dépôt porte le nom **`<owner>.github.io`** — condition
 pour obtenir un site « utilisateur » (une seule URL par compte). Le nom du
-dépôt n'a rien à voir avec le titre du site (`title = "NotExp"`) : GitHub
+dépôt n'a rien à voir avec le titre du site (`title = "Nothing Exploded"`) : GitHub
 exige littéralement le nom du compte. C'est `base_url` dans `config.toml` qui
 doit correspondre à l'URL finale, sinon le CSS, les favicons et les flux
 pointent dans le vide.
