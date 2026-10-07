@@ -101,15 +101,16 @@ socials = []
 
 # Commentaires propulsés par Mastodon
 # (https://carlschwan.eu/2020/12/29/adding-comments-to-your-static-blog-with-mastodon/).
-# ⚠️ À renseigner pour activer les commentaires, le QR code et la vérification rel="me".
-# Les valeurs peuvent être surchargées dans le front-matter d'un article.
-[extra.comments]
-# Instance Mastodon où se trouve le compte
-host = ""
-# Nom d'utilisateur du compte
-user = ""
-# Afficher un QR code vers le post Mastodon
-show_qr = false
+# ⚠️ À décommenter ET à renseigner pour activer les commentaires, le QR code, la
+# vérification rel="me" et le lien vers le profil. Les valeurs peuvent être
+# surchargées dans le front-matter d'un article.
+#[extra.comments]
+## Instance Mastodon où se trouve le compte
+#host = ""
+## Nom d'utilisateur du compte
+#user = ""
+## Afficher un QR code vers le post Mastodon
+#show_qr = false
 
 # Statistiques GoatCounter ; activées uniquement si renseignées.
 [extra.goatcounter]
