@@ -3,7 +3,7 @@
 Blog statique généré avec [Zola](https://www.getzola.org) et le thème
 [Duckquill](https://duckquill.daudix.one), déployé automatiquement sur GitHub Pages.
 
-👉 https://notexp.github.io
+👉 https://nothingexploded.github.io
 
 ## Prérequis
 
@@ -75,6 +75,14 @@ Le workflow `.github/workflows/deploy.yml` se déclenche à chaque `push` sur `m
    `zola build --output-dir public` ;
 3. `actions/configure-pages`, puis upload de `./public` comme artefact Pages ;
 4. déploiement sur GitHub Pages.
+
+Le site est servi à la racine de <https://nothingexploded.github.io>. C'est
+possible parce que le dépôt porte le nom **`<owner>.github.io`** — condition
+pour obtenir un site « utilisateur » (une seule URL par compte). Le nom du
+dépôt n'a rien à voir avec le titre du site (`title = "NotExp"`) : GitHub
+exige littéralement le nom du compte. C'est `base_url` dans `config.toml` qui
+doit correspondre à l'URL finale, sinon le CSS, les favicons et les flux
+pointent dans le vide.
 
 > ⚠️ **Prérequis, sinon la CI échoue à l'étape 3.** L'action `configure-pages`
 > interroge l'API `GET /repos/{owner}/{repo}/pages` ; si Pages n'est pas activé,

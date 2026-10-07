@@ -3,7 +3,7 @@
 # Thème : Duckquill — https://duckquill.daudix.one
 
 title = "NotExp"
-base_url = "https://notexp.github.io"
+base_url = "https://nothingexploded.github.io"
 description = "Blog : expériences, notes techniques et réflexions."
 author = "NotExp"
 
@@ -49,8 +49,10 @@ accent_color_dark = "#ff5c5c"
 # Favicon sous forme d'emoji (un seul emoji est rendu)
 #emoji_favicon = "🦆🪶"
 # Suivi de tickets et code source du site
-issues_url = "https://github.com/notexp/notexp.github.io/issues"
-source_url = "https://github.com/notexp/notexp.github.io"
+# NB : le dépôt GitHub s'appelle NothingExploded.github.io (site « utilisateur »,
+# servi à la racine) ; « NotExp » est le nom du site, pas du compte GitHub.
+issues_url = "https://github.com/NothingExploded/NothingExploded.github.io/issues"
+source_url = "https://github.com/NothingExploded/NothingExploded.github.io"
 # Feuilles de style additionnelles, attendues dans ./static/
 #styles = ["YOUR_STYLE.css"]
 # Scripts additionnels, attendus dans ./static/
