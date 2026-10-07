@@ -67,15 +67,25 @@ themes/duckquill/        # thème versionné ici (pas de sous-module)
 ## Intégration continue
 
 Le workflow `.github/workflows/deploy.yml` se déclenche à chaque `push` sur `main`
-(ou manuellement depuis l'onglet *Actions*) :
+(ou manuellement depuis l'onglet *Actions*). Il tient en **un seul job** `deploy`
+(le pattern officiel GitHub Pages) :
 
 1. checkout du dépôt ;
-2. téléchargement de Zola `0.23.6` et `zola build` ;
+2. téléchargement de Zola `0.23.6` (variable `env.ZOLA_VERSION`) et
+   `zola build --output-dir public` ;
 3. `actions/configure-pages`, puis upload de `./public` comme artefact Pages ;
 4. déploiement sur GitHub Pages.
 
-Pour activer le déploiement, dans les réglages du dépôt :
-**Settings → Pages → Build and deployment → Source : GitHub Actions**.
+> ⚠️ **Prérequis, sinon la CI échoue à l'étape 3.** L'action `configure-pages`
+> interroge l'API `GET /repos/{owner}/{repo}/pages` ; si Pages n'est pas activé,
+> elle répond 404 et le run s'arrête sur
+> « Get Pages site failed. Please verify that the repository has Pages enabled
+> and configured to build using GitHub Actions ».
+> Réglage à faire une fois : **Settings → Pages → Build and deployment →
+> Source : GitHub Actions**.
+> Piège : l'option `enablement: true` de `configure-pages` ne permet pas
+> d'automatiser ce réglage, car l'action refuse explicitement `GITHUB_TOKEN`
+> pour cette opération (il faut un PAT en secret de dépôt).
 
 ## Personnalisation
 
