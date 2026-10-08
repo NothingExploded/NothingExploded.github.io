@@ -84,18 +84,3 @@ $surface-dark: rgb(98 98 98 / 0.8);
 	content: ".";
 	color: var(--accent-color);
 }
-
-// ---------------------------------------------------------------------------
-// Note sur l'art ASCII de la page d'accueil
-// ---------------------------------------------------------------------------
-// L'art fait 76 colonnes. Le thème fixe `pre` à `font-size: 0.875em` (14px pour
-// une racine à 16px), ce qui donne 76 × 0.6 × 14 = 638px : ça tient dans les
-// 688px utiles du bloc sur grand écran.
-//
-// Sur un écran étroit, l'art ne se replie pas — mais `pre` a déjà
-// `overflow: auto` (`themes/duckquill/sass/_code.scss:25`), donc il défile
-// horizontalement dans son bloc au lieu d'être rogné. Aucune surcharge n'est
-// donc nécessaire : une tentative de `font-size: min(0.875em, calc(100cqw / 82))`
-// a été écartée, car `.crt` n'ayant pas de `container-type`, `100cqw` se résout
-// sur la largeur du viewport et réduisait la police à ~4,6px sur un écran de
-// 380px.
