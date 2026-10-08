@@ -84,3 +84,19 @@ $surface-dark: rgb(98 98 98 / 0.8);
 	content: ".";
 	color: var(--accent-color);
 }
+
+// ---------------------------------------------------------------------------
+// Icônes des liens du pied de page
+// ---------------------------------------------------------------------------
+// `templates/partials/footer.html` (surcharge locale) rend une icône quand un
+// lien de `[extra.footer].links` porte un champ `icon`. Le thème ne définit de
+// `mask-image` que pour les liens sociaux (`#site-footer #external-links a
+// .icon → var(--icon)`) ; sans la règle ci-dessous, le `<i class="icon">`
+// ajouté par le gabarit resterait un carré plein à la couleur du texte.
+// `--icon` est posé en style en ligne par le gabarit, sur le nom d'une variable
+// du thème (`--icon-home`, `--icon-git`… définies dans `sass/icons.scss`).
+#site-footer nav a .icon {
+	-webkit-mask-image: var(--icon);
+	mask-image: var(--icon);
+	vertical-align: -0.125em;
+}

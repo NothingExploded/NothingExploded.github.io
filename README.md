@@ -127,7 +127,12 @@ pointent dans le vide.
   thème. L'ordre de `styles` compte : les feuilles sont chargées après
   `style.css`, dans l'ordre de la liste.
 - **Navigation, pied de page, réseaux sociaux** : `[extra.nav]` et `[extra.footer]`
-  de `config.toml`.
+  de `config.toml`. Un lien du pied de page peut porter un champ `icon` : c'est une
+  extension locale (`templates/partials/footer.html`), le thème v6 n'utilisant ce
+  champ que pour les `socials`. La valeur doit nommer une variable `--icon-<nom>`
+  du thème, par exemple `home` pour `--icon-home` ; la liste complète est dans
+  `themes/duckquill/sass/icons.scss`. Le lien devient alors une icône seule, avec
+  le libellé conservé en `title` et en texte pour lecteurs d'écran.
 - **Commentaires Mastodon** : renseigner `host` et `user` dans `[extra.comments]`
   de `config.toml`, puis renseigner la même chose dans l'en-tête `[extra.comments]`
   de l'article concerné.

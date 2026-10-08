@@ -91,14 +91,15 @@ show_repo = true
 # Liens de la barre de navigation ; pour un fichier local, utiliser le format
 # Markdown "@/_index.md" (https://www.getzola.org/documentation/content/linking/)
 links = [
-	{ url = "@/_index.md", name = "Blog", icon = "journal-bookmark-fill" },
-	{ url = "@/contact/_index.md", name = "Contact", icon = "envelope-fill" },
+	{ url = "@/contact/_index.md", name = "Contact" },
 ]
 
 [extra.footer]
-# Liens du pied de page, même format que ceux de la navigation
+# Liens du pied de page, même format que ceux de la navigation.
+# Le champ `icon` est une extension locale (voir templates/partials/footer.html) :
+# il doit nommer une variable `--icon-<nom>` du thème, par exemple « home ».
 links = [
-	{ url = "@/_index.md", name = "Blog" },
+	{ url = "@/_index.md", name = "Accueil", icon = "home" },
 	{ url = "@/contact/_index.md", name = "Contact" },
 ]
 # Liens sociaux du pied de page ; tout SVG encodé en URL convient.
