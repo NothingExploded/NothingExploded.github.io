@@ -83,4 +83,9 @@ trigger_warning = "Avertissement de contenu"
 updated = "Mis à jour le"
 view_comment = "Voir le commentaire"
 view_profile = "Voir le profil"
+# Le composant `translate` du thème cherche une clé préfixée `zero_` quand le
+# nombre vaut 0. Sans ces deux clés, la page d'accueil affiche le texte anglais
+# de repli « 0 posts in total » tant qu'aucun article n'est publié.
+zero_posts = "Aucun article"
+zero_tags = "Aucun mot-clé"
 filter_by_taxon = "Filtrer par $TAXON"

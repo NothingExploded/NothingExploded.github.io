@@ -89,17 +89,17 @@ show_theme_switcher = true
 # Lien vers le dépôt dans la barre de navigation
 show_repo = true
 # Liens de la barre de navigation ; pour un fichier local, utiliser le format
-# Markdown "@/blog/_index.md" (https://www.getzola.org/documentation/content/linking/)
+# Markdown "@/_index.md" (https://www.getzola.org/documentation/content/linking/)
 links = [
-	{ url = "@/blog/_index.md", name = "Blog", icon = "journal-bookmark-fill" },
-	{ url = "@/contact.md", name = "Contact", icon = "envelope-fill" },
+	{ url = "@/_index.md", name = "Blog", icon = "journal-bookmark-fill" },
+	{ url = "@/contact/_index.md", name = "Contact", icon = "envelope-fill" },
 ]
 
 [extra.footer]
 # Liens du pied de page, même format que ceux de la navigation
 links = [
-	{ url = "@/blog/_index.md", name = "Blog" },
-	{ url = "@/contact.md", name = "Contact" },
+	{ url = "@/_index.md", name = "Blog" },
+	{ url = "@/contact/_index.md", name = "Contact" },
 ]
 # Liens sociaux du pied de page ; tout SVG encodé en URL convient.
 # https://simpleicons.org est la source recommandée pour les icônes.

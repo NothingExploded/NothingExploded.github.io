@@ -36,10 +36,16 @@
 		{%- if config.taxonomies | length > 0 -%}
 		    {%- for taxon in config.taxonomies -%}
 			    {%- set taxon_name = taxon.name -%}
+			    {#- Zola ne génère la page d'une taxonomie que si au moins un article
+			        l'utilise ; sans ce garde, le lien « Filtrer par … » pointerait
+			        vers un 404 tant qu'aucun article n'est publié. -#}
+			    {%- set taxon_tax = get_taxonomy(kind=taxon_name) -%}
+			    {%- if taxon_tax.items | length > 0 -%}
 			    <a href="{{- get_url(path='$TAXON', lang=lang) | replace(from="$TAXON", to=taxon.name) | lower -}}">
 					{{ <translate key="filter_by_taxon" default="Filter by $TAXON" language_strings /> | replace(from="$TAXON", to=taxon.name) }}
 			    </a>
 			    <br />
+			    {%- endif -%}
 			{%- endfor %}
 		{%- endif %}
 		{{ <translate key="posts" number={number_of_posts} default="$NUMBER posts in total" language_strings /> }}

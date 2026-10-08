@@ -1,6 +1,6 @@
 +++
 title = "Contact"
-template = "page.html"
+template = "section.html"
 insert_anchor_links = "left"
 +++
 

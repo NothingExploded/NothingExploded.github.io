@@ -1,4 +1,4 @@
-# NotExp
+# Nothing Exploded
 
 Blog statique généré avec [Zola](https://www.getzola.org) et le thème
 [Duckquill](https://duckquill.daudix.one), déployé automatiquement sur GitHub Pages.
@@ -26,7 +26,8 @@ zola build
 
 ## Écrire un article
 
-Créer un dossier dans `content/blog/` contenant un fichier `index.md` :
+Créer un dossier dans `content/` contenant un fichier `index.md` — chaque
+article est un dossier, ce qui permet d'y placer ses images :
 
 ```toml
 +++
@@ -44,18 +45,17 @@ Les images d'un article se placent dans le même dossier et s'appellent avec
 `![description](mon-image.png)`.
 
 Pour lier une page du site, utiliser le format Markdown de Zola, par exemple
-`[Contact](@/contact.md)`.
+`[Contact](@/contact/_index.md)`.
 
 ## Structure du dépôt
 
 ```
 config.toml              # configuration du site (titre, URL, navigation, thème)
 content/
-  _index.md              # page d'accueil
-  contact.md             # page « Contact »
-  blog/
-    _index.md            # configuration de la section blog
-    <article>/index.md   # un article
+  _index.md              # page d'accueil : liste des articles
+  contact/
+    _index.md            # page « Contact »
+  <article>/index.md     # un article
 i18n/
   fr.toml                # chaînes d'interface françaises (surcharge le thème)
 sass/
